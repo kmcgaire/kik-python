@@ -52,6 +52,24 @@ class KikBotMessagesTest(TestCase):
             ]
         })
 
+    def test_text_message_with_keyboard_with_no_responses(self):
+        message = TextMessage(
+            body='Some text',
+            to='kevin',
+            id='8e7fc0ad-36aa-43dd-8c5f-e72f5f2ed7e1',
+            keyboards=[
+                SuggestedResponseKeyboard(
+                    hidden=True,
+                    responses=None)
+            ]
+        ).to_json()
+        self.assertEqual(message, {
+            'type': 'text',
+            'to': 'kevin',
+            'body': 'Some text',
+            'id': '8e7fc0ad-36aa-43dd-8c5f-e72f5f2ed7e1'
+        })
+
     def test_text_message_delay(self):
         message = TextMessage(body='Some text', to='aleem', delay=1500).to_json()
         self.assertEqual(message, {
