@@ -14,7 +14,7 @@ class KeyboardMessage(Message):
 
     def to_json(self):
         output_json = super(KeyboardMessage, self).to_json()
-        if len(self.keyboards) > 0 and all([len(k.responses) > 0 for k in self.keyboards]):
-            output_json['keyboards'] = [keyboard.to_json() for keyboard in self.keyboards]
+        if len(self.keyboards) > 0 and any([k.responses for k in self.keyboards]):
+            output_json['keyboards'] = [keyboard.to_json() for keyboard in self.keyboards if keyboard.responses]
 
         return output_json
