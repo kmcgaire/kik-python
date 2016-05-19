@@ -59,8 +59,8 @@ class KikBotMessagesTest(TestCase):
             id='8e7fc0ad-36aa-43dd-8c5f-e72f5f2ed7e1',
             keyboards=[
                 SuggestedResponseKeyboard(
-                    hidden=True,
-                    responses=None)
+                    responses=None
+                )
             ]
         ).to_json()
         self.assertEqual(message, {
